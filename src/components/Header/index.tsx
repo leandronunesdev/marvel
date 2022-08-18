@@ -1,11 +1,13 @@
+import { MarvelLogo } from '../../assets/images';
+import { SearchInput } from '../SearchInput';
 import * as S from './styles';
 
 export const Header = () => {
   return (
     <S.Wrapper>
-      <div>Logo</div>
-      <div>Search</div>
-      <div>Favorites</div>
+      <MarvelLogo />
+      <SearchInput />
+      <S.StyledFavoriteIcon fontSize='large' />
     </S.Wrapper>
   );
 };
