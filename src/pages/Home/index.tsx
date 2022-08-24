@@ -1,11 +1,15 @@
 import { useEffect } from 'react';
-import { comicsOperations, hooks } from '../../state';
+import { ComicCard } from '../../components';
+import { ComicType } from '../../constants/genericTypes';
+import { comicsOperations, comicsSelectors, hooks } from '../../state';
 
 export const Home = () => {
-  const { useAppDispatch } = hooks;
+  const { useAppDispatch, useAppSelector } = hooks;
   const dispatch = useAppDispatch();
 
   const { getComics } = comicsOperations;
+  const { selectComics } = comicsSelectors;
+  const { comics } = useAppSelector(selectComics);
 
   useEffect(() => {
     dispatch(getComics());
@@ -13,7 +17,14 @@ export const Home = () => {
 
   return (
     <div>
-      <p>Homeee</p>
+      {comics &&
+        comics.map((comic: ComicType) => (
+          <ComicCard
+            key={comic.id}
+            thumbnailUrl={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+            title={comic.title}
+          />
+        ))}
     </div>
   );
 };
