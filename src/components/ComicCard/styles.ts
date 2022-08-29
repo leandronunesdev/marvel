@@ -9,8 +9,8 @@ export const Wrapper = styled.div`
 
     &:hover {
       img {
-        margin-top: 5vh;
-        margin-bottom: 4vh;
+        margin-top: 6vh;
+        margin-bottom: 3vh;
         transition: all 0.17s ease-in-out;
       }
     }
@@ -26,7 +26,9 @@ export const Wrapper = styled.div`
     }
     p {
       font-size: 14px;
+      font-family: ${theme.font.robotoCondensed};
       font-weight: ${theme.font.bold};
+      letter-spacing: 1.2px;
       cursor: pointer;
       &:hover {
         color: ${theme.colors.lightRed};

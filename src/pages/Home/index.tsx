@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { ComicCard } from '../../components';
 import { ComicType } from '../../constants/genericTypes';
 import { comicsOperations, comicsSelectors, hooks } from '../../state';
@@ -22,11 +23,12 @@ export const Home = () => {
       <S.ComicsGrid>
         {comics &&
           comics.map((comic: ComicType) => (
-            <ComicCard
-              key={comic.id}
-              thumbnailUrl={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-              title={comic.title}
-            />
+            <S.StyledLink to={`/comic/${comic.id}`} key={comic.id}>
+              <ComicCard
+                thumbnailUrl={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                title={comic.title}
+              />
+            </S.StyledLink>
           ))}
       </S.ComicsGrid>
     </S.ComicsWrapper>

@@ -1,6 +1,7 @@
 export const Theme = {
   font: {
-    family: 'Roboto, sans-serif',
+    roboto: 'Roboto, sans-serif',
+    robotoCondensed: 'Roboto Condensed, sans-serif',
     regular: 400,
     bold: 700,
   },
@@ -9,6 +10,7 @@ export const Theme = {
     lightRed: '#EA474D',
     red: '#EC1D24',
     yellow: '#FFCA19',
+    black: '#202020',
   },
 };
 
