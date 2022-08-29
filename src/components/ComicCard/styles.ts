@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
     img {
       float: left;
       max-width: 224px;
+      max-height: 335px;
       box-shadow: 0 26px 24px -16px rgb(0 0 0 / 40%);
       margin-bottom: 2vh;
       cursor: pointer;
