@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ComicType } from '../../constants/genericTypes';
 import { comicsOperations, hooks } from '../../state';
 
 import * as S from './styles';
@@ -10,7 +11,7 @@ export const ComicDetails = () => {
   const dispatch = useAppDispatch();
   const { getComicDetails } = comicsOperations;
 
-  const [comic, setComic] = useState<any>();
+  const [comic, setComic] = useState<ComicType>();
   const [writer, setWriter] = useState<any>();
   const [penciler, setPenciler] = useState<any>();
   const [coverArtist, setCoverArtist] = useState<any>();
