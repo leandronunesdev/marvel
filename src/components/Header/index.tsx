@@ -15,8 +15,9 @@ export const Header = () => {
 
   const [search, setSearch] = useState('');
 
-  const onSearchChanged = (e: ChangeEvent<HTMLInputElement>) =>
+  const onSearchChanged = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
+  };
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -26,17 +27,17 @@ export const Header = () => {
         offset: 0,
       };
       dispatch(searchComics(searchParams));
-      navigate('/');
+      navigate(`/search/${search}/1`);
     }
   };
 
   const handleClearSearch = () => {
-    dispatch(getComics());
+    dispatch(getComics(0));
   };
 
   return (
     <S.Wrapper>
-      <Link onClick={() => handleClearSearch()} to={'/'}>
+      <Link onClick={() => handleClearSearch()} to={'/1'}>
         <MarvelLogo />
       </Link>
       <S.StyledForm>

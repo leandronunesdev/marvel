@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const ComicsWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   max-width: 1240px;
   padding: 20px;
   margin: auto;

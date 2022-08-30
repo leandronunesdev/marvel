@@ -10,10 +10,10 @@ const dateRange = '2020-01-01,2022-01-01';
 
 const getComics = createAsyncThunk(
   'comics/getComics',
-  async (params: void, { rejectWithValue }) => {
+  async (offset: number, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(
-        `${COMICS_URL}?ts=${ts}&apikey=${apikey}&hash=${hash}&dateRange=${dateRange}`
+        `${COMICS_URL}?ts=${ts}&apikey=${apikey}&hash=${hash}&dateRange=${dateRange}&offset=${offset}`
       );
       return { data };
     } catch (err: any) {

@@ -4,6 +4,8 @@ import actions from './actions';
 
 export type ComicsState = {
   comics: ComicType[];
+  offset: number;
+  pages: number;
   isSearch: boolean;
   isFetching: boolean;
   error?: SerializedError;
@@ -11,6 +13,8 @@ export type ComicsState = {
 
 const initialState: ComicsState = {
   comics: [],
+  offset: 0,
+  pages: 1,
   isSearch: false,
   isFetching: false,
   error: undefined,
@@ -26,6 +30,8 @@ const comicsReducer = createReducer(initialState, (builder) => {
       state.error = undefined;
       state.comics = action.payload.data.data.results;
       state.isSearch = false;
+      state.offset = action.payload.data.data.offset;
+      state.pages = Math.ceil(action.payload.data.data.total / 20);
     })
     .addCase(actions.getComics.rejected, (state, action) => {
       state.isFetching = false;
@@ -50,6 +56,8 @@ const comicsReducer = createReducer(initialState, (builder) => {
       state.error = undefined;
       state.comics = action.payload.data.data.results;
       state.isSearch = true;
+      state.offset = action.payload.data.data.offset;
+      state.pages = Math.ceil(action.payload.data.data.total / 20);
     })
     .addCase(actions.searchComics.rejected, (state, action) => {
       state.isFetching = false;
