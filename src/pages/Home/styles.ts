@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ComicsWrapper = styled.div`
   display: flex;
@@ -18,4 +18,16 @@ export const ComicsGrid = styled.div`
 export const StyledLink = styled(Link)`
   color: inherit;
   text-decoration: none;
+`;
+
+export const StyledTextBox = styled.div`
+  ${({ theme }) => css`
+    margin: 10% auto;
+    p {
+      font-family: ${theme.font.robotoCondensed};
+      font-weight: ${theme.font.bold};
+      letter-spacing: 1px;
+      font-size: 24px;
+    }
+  `}
 `;

@@ -24,3 +24,28 @@ export const StyledFavoriteIcon = styled(StarIcon)`
     cursor: pointer;
   `}
 `;
+
+export const StyledForm = styled.form`
+  width: 50%;
+  display: flex;
+`;
+
+export const StyledButton = styled.button`
+  ${({ theme }) => css`
+    border: none;
+    margin-left: 20px;
+    height: 50px;
+    background: ${theme.colors.red};
+    color: ${theme.colors.white};
+    font-family: ${theme.font.robotoCondensed};
+    font-weight: ${theme.font.bold};
+    font-size: 14px;
+    padding: 0 35px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid white;
+    }
+  `}
+`;

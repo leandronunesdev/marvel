@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { ComicType } from '../../constants/genericTypes';
 import { comicsOperations, hooks } from '../../state';
 

@@ -42,9 +42,33 @@ const getComicDetails = createAsyncThunk(
   }
 );
 
+const searchComics = createAsyncThunk(
+  'comics/searchComics',
+  async (params: any, { rejectWithValue }) => {
+    const { search, offset } = params;
+    try {
+      const { data } = await axios.get(
+        `${COMICS_URL}?ts=${ts}&apikey=${apikey}&hash=${hash}&titleStartsWith=${search}&offset=${offset}`
+      );
+      return { data };
+    } catch (err: any) {
+      if (!(err as Record<string, string>).response) {
+        throw err;
+      }
+      return rejectWithValue({ message: err.message, type: 'error' });
+    }
+  }
+);
+
+const clearSearch = createAsyncThunk('comics/clearSearch', async () => {
+  return;
+});
+
 const comicsActions = {
   getComics,
   getComicDetails,
+  searchComics,
+  clearSearch,
 };
 
 export default comicsActions;
