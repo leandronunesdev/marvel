@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { MarvelLogo } from '../../assets/images';
 import { comicsOperations, hooks } from '../../state';
@@ -9,6 +9,7 @@ import * as S from './styles';
 export const Header = () => {
   const { useAppDispatch } = hooks;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const { searchComics, getComics } = comicsOperations;
 
@@ -24,8 +25,8 @@ export const Header = () => {
         search: search,
         offset: 0,
       };
-
       dispatch(searchComics(searchParams));
+      navigate('/');
     }
   };
 

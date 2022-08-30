@@ -60,15 +60,10 @@ const searchComics = createAsyncThunk(
   }
 );
 
-const clearSearch = createAsyncThunk('comics/clearSearch', async () => {
-  return;
-});
-
 const comicsActions = {
   getComics,
   getComicDetails,
   searchComics,
-  clearSearch,
 };
 
 export default comicsActions;

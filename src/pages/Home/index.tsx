@@ -12,11 +12,13 @@ export const Home = () => {
 
   const { getComics } = comicsOperations;
   const { selectComics } = comicsSelectors;
-  const { comics, isFetching } = useAppSelector(selectComics);
+  const { comics, isFetching, isSearch } = useAppSelector(selectComics);
 
   useEffect(() => {
-    dispatch(getComics());
-  }, [dispatch, getComics]);
+    if (!isSearch && !comics.length) {
+      dispatch(getComics());
+    }
+  }, [dispatch, getComics, isSearch, comics]);
 
   return (
     <S.ComicsWrapper>

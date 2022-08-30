@@ -4,12 +4,14 @@ import actions from './actions';
 
 export type ComicsState = {
   comics: ComicType[];
+  isSearch: boolean;
   isFetching: boolean;
   error?: SerializedError;
 };
 
 const initialState: ComicsState = {
   comics: [],
+  isSearch: false,
   isFetching: false,
   error: undefined,
 };
@@ -23,6 +25,7 @@ const comicsReducer = createReducer(initialState, (builder) => {
       state.isFetching = false;
       state.error = undefined;
       state.comics = action.payload.data.data.results;
+      state.isSearch = false;
     })
     .addCase(actions.getComics.rejected, (state, action) => {
       state.isFetching = false;
@@ -46,20 +49,9 @@ const comicsReducer = createReducer(initialState, (builder) => {
       state.isFetching = false;
       state.error = undefined;
       state.comics = action.payload.data.data.results;
+      state.isSearch = true;
     })
     .addCase(actions.searchComics.rejected, (state, action) => {
-      state.isFetching = false;
-      state.error = action.error;
-    })
-    .addCase(actions.clearSearch.pending, (state) => {
-      state.isFetching = true;
-    })
-    .addCase(actions.clearSearch.fulfilled, (state) => {
-      state.isFetching = false;
-      state.error = undefined;
-      state.comics = [];
-    })
-    .addCase(actions.clearSearch.rejected, (state, action) => {
       state.isFetching = false;
       state.error = action.error;
     });

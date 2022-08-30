@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Loading } from '../../components';
 
 import { ComicType } from '../../constants/genericTypes';
-import { comicsOperations, hooks } from '../../state';
+import { comicsOperations, comicsSelectors, hooks } from '../../state';
 
 import * as S from './styles';
 
 export const ComicDetails = () => {
   const params = useParams();
-  const { useAppDispatch } = hooks;
+  const { useAppDispatch, useAppSelector } = hooks;
   const dispatch = useAppDispatch();
   const { getComicDetails } = comicsOperations;
+  const { selectComics } = comicsSelectors;
+  const { isFetching } = useAppSelector(selectComics);
 
   const [comic, setComic] = useState<ComicType>();
   const [writer, setWriter] = useState<any>();
@@ -45,50 +48,56 @@ export const ComicDetails = () => {
 
   return (
     <S.ComicDetailsWrapper>
-      {comic && (
-        <S.ComicDetails>
-          <div>
-            <img
-              src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-              alt=''
-            />
-          </div>
-          <div>
-            <div>
-              <h1>{comic.title}</h1>
-              <h2>Published:</h2>
-              <p>{comic.dates[0].date}</p>
-            </div>
-            <div>
-              {writer && (
-                <>
-                  <h2>Writer:</h2>
-                  <p>{writer.name}</p>
-                </>
-              )}
-              {penciler && (
-                <>
-                  <h2>Penciler:</h2>
-                  <p>{penciler.name}</p>
-                </>
-              )}
-              {coverArtist && (
-                <>
-                  <h2>Cover Artist:</h2>
-                  <p>{coverArtist.name}</p>
-                </>
-              )}
-            </div>
-            {characters.length > 0 && (
-              <>
-                <h2>Characters</h2>
-                {characters.map((character: any) => (
-                  <p key={character.name}>{character.name}</p>
-                ))}
-              </>
-            )}
-          </div>
-        </S.ComicDetails>
+      {isFetching ? (
+        <Loading />
+      ) : (
+        <>
+          {comic && (
+            <S.ComicDetails>
+              <div>
+                <img
+                  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                  alt=''
+                />
+              </div>
+              <div>
+                <div>
+                  <h1>{comic.title}</h1>
+                  <h2>Published:</h2>
+                  <p>{comic.dates[0].date}</p>
+                </div>
+                <div>
+                  {writer && (
+                    <>
+                      <h2>Writer:</h2>
+                      <p>{writer.name}</p>
+                    </>
+                  )}
+                  {penciler && (
+                    <>
+                      <h2>Penciler:</h2>
+                      <p>{penciler.name}</p>
+                    </>
+                  )}
+                  {coverArtist && (
+                    <>
+                      <h2>Cover Artist:</h2>
+                      <p>{coverArtist.name}</p>
+                    </>
+                  )}
+                </div>
+                {characters.length > 0 && (
+                  <>
+                    <h2>Characters</h2>
+                    {characters.map((character: any) => (
+                      <p key={character.name}>{character.name}</p>
+                    ))}
+                  </>
+                )}
+              </div>
+            </S.ComicDetails>
+          )}
+        </>
       )}
     </S.ComicDetailsWrapper>
   );
