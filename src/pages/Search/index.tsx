@@ -9,46 +9,45 @@ import { CustomPagination } from '../../components/Pagination';
 import { useNavigate, useParams } from 'react-router-dom';
 import { checkPage } from '../../utils/pageHelper';
 
-export const Home = () => {
+export const Search = () => {
   const { useAppDispatch, useAppSelector } = hooks;
   const dispatch = useAppDispatch();
   const params = useParams();
   const navigate = useNavigate();
 
-  const { getComics } = comicsOperations;
+  const { searchComics } = comicsOperations;
   const { selectComics } = comicsSelectors;
   const { comics, isFetching, pages } = useAppSelector(selectComics);
 
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (!comics.length && !params.page && currentPage === 1) {
-      dispatch(getComics(0));
-    }
-    if (
-      !comics.length &&
-      params.page &&
-      parseInt(params.page) === currentPage
-    ) {
-      const offset = (currentPage - 1) * 20;
+    if (!comics.length && params.page) {
+      setCurrentPage(parseInt(params.page));
+      const offset = (parseInt(params.page) - 1) * 20;
 
-      dispatch(getComics(offset));
+      const searchParams = {
+        search: params.search,
+        offset: offset,
+      };
+
+      dispatch(searchComics(searchParams));
     }
-  }, [dispatch, getComics, currentPage, params, comics]);
+  }, [comics, params, dispatch, searchComics]);
 
   const handlePageChange = (e: any) => {
     const page = checkPage(e, currentPage);
     const offset = (page - 1) * 20;
     setCurrentPage(page);
-    dispatch(getComics(offset));
-    navigate(`/${page}`);
-  };
 
-  useEffect(() => {
-    if (params.page) {
-      setCurrentPage(parseInt(params.page));
-    }
-  }, [params]);
+    const searchParams = {
+      search: params.search,
+      offset: offset,
+    };
+
+    dispatch(searchComics(searchParams));
+    navigate(`/search/${params.search}/${page}`);
+  };
 
   return (
     <S.ComicsWrapper>
