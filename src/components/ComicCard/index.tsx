@@ -1,4 +1,5 @@
 import { EmptyFavoriteIcon, FilledFavoriteIcon } from '..';
+
 import * as S from './styles';
 
 export type ComicCardProps = {

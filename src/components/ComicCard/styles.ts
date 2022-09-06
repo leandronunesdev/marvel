@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import StarRoundedIcon from '@mui/icons-material/StarRounded';
-import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`

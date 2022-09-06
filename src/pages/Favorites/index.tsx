@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { ComicsGrid, Loading } from '../../components';
 import { comicsSelectors, hooks } from '../../state';
 
@@ -11,6 +12,9 @@ export const Favorites = () => {
 
   return (
     <S.ComicsWrapper>
+      <Helmet>
+        <title>Favorites | Comic Search</title>
+      </Helmet>
       {isFetching ? (
         <Loading />
       ) : (

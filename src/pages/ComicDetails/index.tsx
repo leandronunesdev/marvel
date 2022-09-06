@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import {
   EmptyFavoriteIcon,
   FilledFavoriteIcon,
   Loading,
 } from '../../components';
-
 import { ComicType } from '../../constants/genericTypes';
 import { comicsOperations, comicsSelectors, hooks } from '../../state';
 

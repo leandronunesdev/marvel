@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
-import { ComicCard, ComicsGrid, Loading } from '../../components';
-import { ComicType } from '../../constants/genericTypes';
+import { ComicsGrid, Loading } from '../../components';
 import { comicsOperations, comicsSelectors, hooks } from '../../state';
+import { CustomPagination } from '../../components/Pagination';
+import { checkPage } from '../../utils/pageHelper';
 
 import * as S from './styles';
-import { CustomPagination } from '../../components/Pagination';
-import { useNavigate, useParams } from 'react-router-dom';
-import { checkPage } from '../../utils/pageHelper';
 
 export const Search = () => {
   const { useAppDispatch, useAppSelector } = hooks;
@@ -51,6 +51,9 @@ export const Search = () => {
 
   return (
     <S.ComicsWrapper>
+      <Helmet>
+        <title>Search Results | Comic Search</title>
+      </Helmet>
       {isFetching ? (
         <Loading />
       ) : (
