@@ -7,6 +7,7 @@ export type ComicsState = {
   favorites: ComicType[];
   offset: number;
   pages: number;
+  attribution: string;
   isFetching: boolean;
   error?: SerializedError;
 };
@@ -16,6 +17,7 @@ const initialState: ComicsState = {
   favorites: [],
   offset: 0,
   pages: 1,
+  attribution: 'Data provided by Marvel. © 2022 MARVEL',
   isFetching: false,
   error: undefined,
 };
@@ -31,6 +33,7 @@ const comicsReducer = createReducer(initialState, (builder) => {
       state.comics = action.payload.data.data.results;
       state.offset = action.payload.data.data.offset;
       state.pages = Math.ceil(action.payload.data.data.total / 20);
+      state.attribution = action.payload.data.attributionText;
     })
     .addCase(actions.getComics.rejected, (state, action) => {
       state.isFetching = false;
@@ -42,6 +45,7 @@ const comicsReducer = createReducer(initialState, (builder) => {
     .addCase(actions.getComicDetails.fulfilled, (state, action) => {
       state.isFetching = false;
       state.error = undefined;
+      state.attribution = action.payload.data.attributionText;
     })
     .addCase(actions.getComicDetails.rejected, (state, action) => {
       state.isFetching = false;
@@ -56,6 +60,7 @@ const comicsReducer = createReducer(initialState, (builder) => {
       state.comics = action.payload.data.data.results;
       state.offset = action.payload.data.data.offset;
       state.pages = Math.ceil(action.payload.data.data.total / 20);
+      state.attribution = action.payload.data.attributionText;
     })
     .addCase(actions.searchComics.rejected, (state, action) => {
       state.isFetching = false;

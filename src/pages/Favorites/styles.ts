@@ -7,6 +7,7 @@ export const ComicsWrapper = styled.div`
   padding: 20px;
   margin: auto;
   margin-bottom: 50px;
+  height: 100vh;
 `;
 
 export const StyledTextBox = styled.div`

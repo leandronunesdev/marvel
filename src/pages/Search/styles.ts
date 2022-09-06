@@ -12,6 +12,7 @@ export const ComicsWrapper = styled.div`
 export const StyledTextBox = styled.div`
   ${({ theme }) => css`
     margin: 10% auto;
+    height: 100vh;
     p {
       font-family: ${theme.font.robotoCondensed};
       font-weight: ${theme.font.bold};

@@ -5,6 +5,7 @@ export const ComicDetailsWrapper = styled.div`
   max-width: 1240px;
   padding: 20px;
   margin: auto;
+  height: 100vh;
 `;
 
 export const ComicDetails = styled.div`
