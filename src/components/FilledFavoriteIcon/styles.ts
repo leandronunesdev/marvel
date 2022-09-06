@@ -1,13 +1,13 @@
 import styled, { css, DefaultTheme } from 'styled-components';
-import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
 
-type EmptyFavoriteIconType = {
+type FilledFavoriteIconType = {
   theme: DefaultTheme;
   isComicCard?: boolean;
 };
 
-export const EmptyFavoriteIcon = styled(StarBorderRoundedIcon)`
-  ${({ theme, isComicCard }: EmptyFavoriteIconType) => css`
+export const FilledFavoriteIcon = styled(StarRoundedIcon)`
+  ${({ theme, isComicCard }: FilledFavoriteIconType) => css`
     color: ${theme.colors.yellow};
     cursor: pointer;
     background: ${theme.colors.transparentWhite};
@@ -18,7 +18,7 @@ export const EmptyFavoriteIcon = styled(StarBorderRoundedIcon)`
       position: absolute;
       top: 75px;
       right: 15px;
-      opacity: 0;
+      opacity: 1;
     `}
   `}
 `;

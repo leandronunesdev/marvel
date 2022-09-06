@@ -1,4 +1,4 @@
-import { EmptyFavoriteIcon } from '..';
+import { EmptyFavoriteIcon, FilledFavoriteIcon } from '..';
 import * as S from './styles';
 
 export type ComicCardProps = {
@@ -20,12 +20,9 @@ export const ComicCard = ({
     <S.Wrapper>
       <S.FavoriteIconWrapper>
         {isFavorite ? (
-          <S.FilledFavoriteIcon
-            onClick={() => handleAddFavorite()}
-            fontSize='large'
-          />
+          <FilledFavoriteIcon onClick={() => handleAddFavorite()} isComicCard />
         ) : (
-          <EmptyFavoriteIcon onClick={() => handleAddFavorite()} />
+          <EmptyFavoriteIcon onClick={() => handleAddFavorite()} isComicCard />
         )}
       </S.FavoriteIconWrapper>
       <S.StyledLink to={detailsUrl}>

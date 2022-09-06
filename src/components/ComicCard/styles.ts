@@ -52,29 +52,3 @@ export const StyledLink = styled(Link)`
 export const FavoriteIconWrapper = styled.div`
   position: relative;
 `;
-
-export const EmptyFavoriteIcon = styled(StarBorderRoundedIcon)`
-  ${({ theme }) => css`
-    color: ${theme.colors.yellow};
-    cursor: pointer;
-    background: ${theme.colors.transparentWhite};
-    border-radius: 50%;
-    position: absolute;
-    top: 75px;
-    right: 15px;
-    opacity: 0;
-  `}
-`;
-
-export const FilledFavoriteIcon = styled(StarRoundedIcon)`
-  ${({ theme }) => css`
-    color: ${theme.colors.yellow};
-    cursor: pointer;
-    background: ${theme.colors.transparentWhite};
-    border-radius: 50%;
-    position: absolute;
-    top: 75px;
-    right: 15px;
-    opacity: 1;
-  `}
-`;

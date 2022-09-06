@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loading } from '../../components';
+import {
+  EmptyFavoriteIcon,
+  FilledFavoriteIcon,
+  Loading,
+} from '../../components';
 
 import { ComicType } from '../../constants/genericTypes';
 import { comicsOperations, comicsSelectors, hooks } from '../../state';
@@ -11,15 +15,27 @@ export const ComicDetails = () => {
   const params = useParams();
   const { useAppDispatch, useAppSelector } = hooks;
   const dispatch = useAppDispatch();
-  const { getComicDetails } = comicsOperations;
+  const { getComicDetails, addFavorite } = comicsOperations;
   const { selectComics } = comicsSelectors;
-  const { isFetching } = useAppSelector(selectComics);
+  const { isFetching, favorites } = useAppSelector(selectComics);
 
   const [comic, setComic] = useState<ComicType>();
   const [writer, setWriter] = useState<any>();
   const [penciler, setPenciler] = useState<any>();
   const [coverArtist, setCoverArtist] = useState<any>();
   const [characters, setCharacters] = useState<any>([]);
+
+  const handleAddFavorite = (comic: ComicType) => {
+    dispatch(addFavorite(comic));
+  };
+
+  const isFavorite = (comic: ComicType) => {
+    const isFound = favorites.find((item) => item.id === comic.id);
+    if (isFound) {
+      return true;
+    }
+    return false;
+  };
 
   useEffect(() => {
     if (params.id) {
@@ -62,7 +78,18 @@ export const ComicDetails = () => {
               </div>
               <div>
                 <div>
-                  <h1>{comic.title}</h1>
+                  <S.ComicDetailsHeader>
+                    <h1>{comic.title}</h1>
+                    {isFavorite(comic) ? (
+                      <FilledFavoriteIcon
+                        onClick={() => handleAddFavorite(comic)}
+                      />
+                    ) : (
+                      <EmptyFavoriteIcon
+                        onClick={() => handleAddFavorite(comic)}
+                      />
+                    )}
+                  </S.ComicDetailsHeader>
                   <h2>Published:</h2>
                   <p>{comic.dates[0].date}</p>
                 </div>

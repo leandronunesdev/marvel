@@ -1,16 +1,16 @@
 import * as S from './styles';
 
-export type EmptyFavoriteIconProps = {
+export type FilledFavoriteIconProps = {
   onClick: () => void;
   isComicCard?: boolean;
 };
 
-export const EmptyFavoriteIcon = ({
+export const FilledFavoriteIcon = ({
   onClick,
   isComicCard,
-}: EmptyFavoriteIconProps) => {
+}: FilledFavoriteIconProps) => {
   return (
-    <S.EmptyFavoriteIcon
+    <S.FilledFavoriteIcon
       onClick={onClick}
       fontSize='large'
       isComicCard={isComicCard}

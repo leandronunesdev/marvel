@@ -33,3 +33,8 @@ export const ComicDetails = styled.div`
     }
   `}
 `;
+
+export const ComicDetailsHeader = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+`;
