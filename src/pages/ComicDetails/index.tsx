@@ -7,6 +7,7 @@ import {
   Loading,
 } from '../../components';
 import { ComicType } from '../../constants/genericTypes';
+import { MONTHS } from '../../constants/months';
 import { comicsOperations, comicsSelectors, hooks } from '../../state';
 
 import * as S from './styles';
@@ -35,6 +36,15 @@ export const ComicDetails = () => {
       return true;
     }
     return false;
+  };
+
+  const dateConverter = (timestamp: string) => {
+    const date = new Date(timestamp);
+    const month = MONTHS[date.getMonth() - 1];
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    return `${month.name} ${day}, ${year}`;
   };
 
   useEffect(() => {
@@ -91,7 +101,7 @@ export const ComicDetails = () => {
                     )}
                   </S.ComicDetailsHeader>
                   <h2>Published:</h2>
-                  <p>{comic.dates[0].date}</p>
+                  <p>{dateConverter(comic.dates[0].date)}</p>
                 </div>
                 <div>
                   {writer && (

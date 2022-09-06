@@ -10,10 +10,12 @@ export const EmptyFavoriteIcon = ({
   isComicCard,
 }: EmptyFavoriteIconProps) => {
   return (
-    <S.EmptyFavoriteIcon
-      onClick={onClick}
-      fontSize='large'
-      isComicCard={isComicCard}
-    />
+    <div>
+      <S.EmptyFavoriteIcon
+        onClick={onClick}
+        fontSize='large'
+        isComicCard={isComicCard}
+      />
+    </div>
   );
 };
