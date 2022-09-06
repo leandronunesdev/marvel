@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { ComicDetails, Home, Search } from './pages';
+import { ComicDetails, Favorites, Home, Search } from './pages';
 import MainRoute from './routes/MainRoute';
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
         <Route path='/:page' element={<Home />} />
         <Route path='/comic/:id' element={<ComicDetails />} />
         <Route path='/search/:search/:page' element={<Search />} />
+        <Route path='/favorites' element={<Favorites />} />
       </Route>
     </Routes>
   );

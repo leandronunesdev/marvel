@@ -16,11 +16,6 @@ export const ComicsGrid = styled.div`
   grid-gap: 20px;
 `;
 
-export const StyledLink = styled(Link)`
-  color: inherit;
-  text-decoration: none;
-`;
-
 export const StyledTextBox = styled.div`
   ${({ theme }) => css`
     margin: 10% auto;

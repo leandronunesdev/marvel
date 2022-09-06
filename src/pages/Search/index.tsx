@@ -22,7 +22,7 @@ export const Search = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (!comics.length && params.page) {
+    if (params.page) {
       setCurrentPage(parseInt(params.page));
       const offset = (parseInt(params.page) - 1) * 20;
 
@@ -33,7 +33,7 @@ export const Search = () => {
 
       dispatch(searchComics(searchParams));
     }
-  }, [comics, params, dispatch, searchComics]);
+  }, [params, dispatch, searchComics]);
 
   const handlePageChange = (e: any) => {
     const page = checkPage(e, currentPage);

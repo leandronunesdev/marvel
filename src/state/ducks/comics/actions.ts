@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { ComicType } from '../../../constants/genericTypes';
 
 const COMICS_URL = 'http://gateway.marvel.com/v1/public/comics';
 
@@ -60,10 +61,25 @@ const searchComics = createAsyncThunk(
   }
 );
 
+const addFavorite = createAsyncThunk(
+  'comics/addFavorite',
+  async (comic: ComicType, { rejectWithValue }) => {
+    try {
+      return comic;
+    } catch (err: any) {
+      if (!(err as Record<string, string>).response) {
+        throw err;
+      }
+      return rejectWithValue({ message: err.message, type: 'error' });
+    }
+  }
+);
+
 const comicsActions = {
   getComics,
   getComicDetails,
   searchComics,
+  addFavorite,
 };
 
 export default comicsActions;

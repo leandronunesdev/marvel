@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -12,6 +15,10 @@ export const Wrapper = styled.div`
         margin-top: 6vh;
         margin-bottom: 3vh;
         transition: all 0.17s ease-in-out;
+      }
+
+      svg {
+        opacity: 1;
       }
     }
 
@@ -34,5 +41,40 @@ export const Wrapper = styled.div`
         color: ${theme.colors.lightRed};
       }
     }
+  `}
+`;
+
+export const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+`;
+
+export const FavoriteIconWrapper = styled.div`
+  position: relative;
+`;
+
+export const EmptyFavoriteIcon = styled(StarBorderRoundedIcon)`
+  ${({ theme }) => css`
+    color: ${theme.colors.yellow};
+    cursor: pointer;
+    background: ${theme.colors.transparentWhite};
+    border-radius: 50%;
+    position: absolute;
+    top: 75px;
+    right: 15px;
+    opacity: 0;
+  `}
+`;
+
+export const FilledFavoriteIcon = styled(StarRoundedIcon)`
+  ${({ theme }) => css`
+    color: ${theme.colors.yellow};
+    cursor: pointer;
+    background: ${theme.colors.transparentWhite};
+    border-radius: 50%;
+    position: absolute;
+    top: 75px;
+    right: 15px;
+    opacity: 1;
   `}
 `;

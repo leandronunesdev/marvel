@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { ComicCard, ComicsGrid, Loading } from '../../components';
-import { ComicType } from '../../constants/genericTypes';
+import { ComicsGrid, Loading } from '../../components';
 import { comicsOperations, comicsSelectors, hooks } from '../../state';
 
 import * as S from './styles';

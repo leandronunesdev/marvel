@@ -48,7 +48,9 @@ export const Header = () => {
         />
         <S.StyledButton onClick={handleSearch}>COMIC SEARCH</S.StyledButton>
       </S.StyledForm>
-      <S.StyledFavoriteIcon fontSize='large' />
+      <Link to={'/favorites'}>
+        <S.StyledFavoriteIcon fontSize='large' />
+      </Link>
     </S.Wrapper>
   );
 };

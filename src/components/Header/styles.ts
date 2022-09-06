@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import StarIcon from '@mui/icons-material/Star';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   `}
 `;
 
-export const StyledFavoriteIcon = styled(StarIcon)`
+export const StyledFavoriteIcon = styled(StarRoundedIcon)`
   ${({ theme }) => css`
     color: ${theme.colors.yellow};
     margin-right: 50px;

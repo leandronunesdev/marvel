@@ -8,7 +8,7 @@ export type SearchInputProps = {
 };
 
 export const SearchInput = ({
-  placeholder = 'test',
+  placeholder,
   value,
   onChange,
 }: SearchInputProps) => {

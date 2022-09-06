@@ -4,18 +4,18 @@ import actions from './actions';
 
 export type ComicsState = {
   comics: ComicType[];
+  favorites: ComicType[];
   offset: number;
   pages: number;
-  isSearch: boolean;
   isFetching: boolean;
   error?: SerializedError;
 };
 
 const initialState: ComicsState = {
   comics: [],
+  favorites: [],
   offset: 0,
   pages: 1,
-  isSearch: false,
   isFetching: false,
   error: undefined,
 };
@@ -29,7 +29,6 @@ const comicsReducer = createReducer(initialState, (builder) => {
       state.isFetching = false;
       state.error = undefined;
       state.comics = action.payload.data.data.results;
-      state.isSearch = false;
       state.offset = action.payload.data.data.offset;
       state.pages = Math.ceil(action.payload.data.data.total / 20);
     })
@@ -55,11 +54,32 @@ const comicsReducer = createReducer(initialState, (builder) => {
       state.isFetching = false;
       state.error = undefined;
       state.comics = action.payload.data.data.results;
-      state.isSearch = true;
       state.offset = action.payload.data.data.offset;
       state.pages = Math.ceil(action.payload.data.data.total / 20);
     })
     .addCase(actions.searchComics.rejected, (state, action) => {
+      state.isFetching = false;
+      state.error = action.error;
+    })
+    .addCase(actions.addFavorite.pending, (state) => {
+      state.isFetching = false;
+    })
+    .addCase(actions.addFavorite.fulfilled, (state, action) => {
+      const { id } = action.payload;
+      const alreadyFavorite = state.favorites.find((item) => item.id === id);
+      if (alreadyFavorite) {
+        const updatedFavorites = state.favorites.filter(
+          (item) => item.id !== id
+        );
+        state.favorites = updatedFavorites;
+        return;
+      } else {
+        state.favorites.push(action.payload);
+      }
+      state.isFetching = false;
+      state.error = undefined;
+    })
+    .addCase(actions.addFavorite.rejected, (state, action) => {
       state.isFetching = false;
       state.error = action.error;
     });
