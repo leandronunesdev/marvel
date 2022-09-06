@@ -10,10 +10,8 @@ export const FilledFavoriteIcon = ({
   isComicCard,
 }: FilledFavoriteIconProps) => {
   return (
-    <S.FilledFavoriteIcon
-      onClick={onClick}
-      fontSize='large'
-      isComicCard={isComicCard}
-    />
+    <S.FilledFavoriteIconWrapper onClick={onClick} isComicCard={isComicCard}>
+      <S.FilledFavoriteIcon fontSize='large' />
+    </S.FilledFavoriteIconWrapper>
   );
 };

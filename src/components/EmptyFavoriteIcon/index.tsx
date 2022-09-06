@@ -11,11 +11,9 @@ export const EmptyFavoriteIcon = ({
 }: EmptyFavoriteIconProps) => {
   return (
     <div>
-      <S.EmptyFavoriteIcon
-        onClick={onClick}
-        fontSize='large'
-        isComicCard={isComicCard}
-      />
+      <S.EmptyFavoriteIconWrapper onClick={onClick} isComicCard={isComicCard}>
+        <S.EmptyFavoriteIcon fontSize='large' />
+      </S.EmptyFavoriteIconWrapper>
     </div>
   );
 };
