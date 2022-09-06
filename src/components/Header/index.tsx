@@ -1,9 +1,11 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
-import { MarvelLogo } from '../../assets/images';
+import { MarvelLogo, MarvelLogoSmall } from '../../assets/images';
 import { comicsOperations, hooks } from '../../state';
 import { SearchInput } from '../SearchInput';
+
 import * as S from './styles';
 
 export const Header = () => {
@@ -14,6 +16,19 @@ export const Header = () => {
   const { searchComics, getComics } = comicsOperations;
 
   const [search, setSearch] = useState('');
+  const [width, setWidth] = useState<number>();
+
+  const widthChange = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', widthChange);
+
+    return () => {
+      window.removeEventListener('resize', widthChange);
+    };
+  });
 
   const onSearchChanged = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -37,16 +52,18 @@ export const Header = () => {
 
   return (
     <S.Wrapper>
-      <Link onClick={() => handleClearSearch()} to={'/1'}>
-        <MarvelLogo />
-      </Link>
+      <S.StyledLink onClick={() => handleClearSearch()} to={'/1'}>
+        {width && width >= 760 ? <MarvelLogo /> : <MarvelLogoSmall />}
+      </S.StyledLink>
       <S.StyledForm>
         <SearchInput
           placeholder='Search for the comic title here'
           value={search}
           onChange={onSearchChanged}
         />
-        <S.StyledButton onClick={handleSearch}>COMIC SEARCH</S.StyledButton>
+        <S.StyledButton onClick={handleSearch}>
+          {width && width >= 760 ? 'COMIC SEARCH' : <SearchRoundedIcon />}
+        </S.StyledButton>
       </S.StyledForm>
       <Link to={'/favorites'}>
         <S.StyledFavoriteIcon fontSize='large' />

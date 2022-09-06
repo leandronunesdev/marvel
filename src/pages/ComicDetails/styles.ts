@@ -31,6 +31,20 @@ export const ComicDetails = styled.div`
       font-size: 20px;
       margin-top: 20px;
     }
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+
+      div:first-child {
+        margin: auto;
+      }
+    }
+
+    @media (max-width: 400px) {
+      img {
+        width: 100%;
+      }
+    }
   `}
 `;
 

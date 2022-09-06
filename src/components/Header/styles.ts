@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -9,25 +10,37 @@ export const Wrapper = styled.div`
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 40%);
     align-items: center;
     background-color: ${theme.colors.black};
-
-    svg:first-child {
-      margin-left: 50px;
-      cursor: pointer;
-    }
   `}
+`;
+
+export const StyledLink = styled(Link)`
+  margin-left: 50px;
+  display: flex;
+
+  @media (max-width: 750px) {
+    margin-left: 10px;
+  }
 `;
 
 export const StyledFavoriteIcon = styled(StarRoundedIcon)`
   ${({ theme }) => css`
     color: ${theme.colors.yellow};
-    margin-right: 50px;
+    margin: 0 50px 0 0;
     cursor: pointer;
+
+    @media (max-width: 750px) {
+      margin-right: 10px;
+    }
   `}
 `;
 
 export const StyledForm = styled.form`
   width: 50%;
   display: flex;
+
+  @media (max-width: 750px) {
+    width: 70%;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -46,6 +59,11 @@ export const StyledButton = styled.button`
 
     &:hover {
       border: 1px solid white;
+    }
+
+    @media (max-width: 750px) {
+      padding: 0 8px;
+      margin-left: 8px;
     }
   `}
 `;

@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     width: 224px;
     height: 400px;
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
     transition: all 0.17s ease-in-out;
 
     &:hover {

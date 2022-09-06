@@ -8,5 +8,10 @@ export const StyledInput = styled.input`
     font-size: 16px;
     outline: none;
     font-family: ${theme.font.robotoCondensed};
+
+    @media (max-width: 750px) {
+      padding-left: 2px;
+      font-size: 14px;
+    }
   `}
 `;
