@@ -8,19 +8,14 @@ export type ComicType = {
   creators: {
     items: CreatorType[];
   };
-  characters: {
-    items: CharacterType[];
-  };
   dates: DateType[];
+  description: string;
 };
 
 export type CreatorType = {
   role: string;
   name: string;
-};
-
-export type CharacterType = {
-  name: string;
+  resourceURI: string;
 };
 
 export type DateType = {

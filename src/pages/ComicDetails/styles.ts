@@ -22,6 +22,7 @@ export const ComicDetails = styled.div`
     h1,
     h2 {
       font-family: ${theme.font.robotoCondensed};
+      text-transform: capitalize;
     }
 
     h1 {
@@ -47,6 +48,11 @@ export const ComicDetails = styled.div`
       }
     }
   `}
+`;
+
+export const CreatorsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
 
 export const ComicDetailsHeader = styled.div`

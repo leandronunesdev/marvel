@@ -6,7 +6,7 @@ import {
   FilledFavoriteIcon,
   Loading,
 } from '../../components';
-import { ComicType } from '../../constants/genericTypes';
+import { ComicType, CreatorType } from '../../constants/genericTypes';
 import { MONTHS } from '../../constants/months';
 import { comicsOperations, comicsSelectors, hooks } from '../../state';
 
@@ -21,10 +21,7 @@ export const ComicDetails = () => {
   const { isFetching, favorites } = useAppSelector(selectComics);
 
   const [comic, setComic] = useState<ComicType>();
-  const [writer, setWriter] = useState<any>();
-  const [penciler, setPenciler] = useState<any>();
-  const [coverArtist, setCoverArtist] = useState<any>();
-  const [characters, setCharacters] = useState<any>([]);
+  const [creators, setCreators] = useState<CreatorType[]>([]);
 
   const handleAddFavorite = (comic: ComicType) => {
     dispatch(addFavorite(comic));
@@ -57,18 +54,7 @@ export const ComicDetails = () => {
 
   useEffect(() => {
     if (comic) {
-      setWriter(
-        comic.creators.items.find((creator: any) => creator.role === 'writer')
-      );
-      setPenciler(
-        comic.creators.items.find((creator: any) => creator.role === 'penciler')
-      );
-      setCoverArtist(
-        comic.creators.items.find(
-          (creator: any) => creator.role === 'penciler (cover)'
-        )
-      );
-      setCharacters(comic.characters.items);
+      setCreators(comic.creators.items);
     }
   }, [comic]);
 
@@ -103,32 +89,19 @@ export const ComicDetails = () => {
                   <h2>Published:</h2>
                   <p>{dateConverter(comic.dates[0].date)}</p>
                 </div>
-                <div>
-                  {writer && (
-                    <>
-                      <h2>Writer:</h2>
-                      <p>{writer.name}</p>
-                    </>
-                  )}
-                  {penciler && (
-                    <>
-                      <h2>Penciler:</h2>
-                      <p>{penciler.name}</p>
-                    </>
-                  )}
-                  {coverArtist && (
-                    <>
-                      <h2>Cover Artist:</h2>
-                      <p>{coverArtist.name}</p>
-                    </>
-                  )}
-                </div>
-                {characters.length > 0 && (
-                  <>
-                    <h2>Characters</h2>
-                    {characters.map((character: any) => (
-                      <p key={character.name}>{character.name}</p>
+                <S.CreatorsWrapper>
+                  {creators.length &&
+                    creators.map((creator: any) => (
+                      <div key={creator.resourceURI}>
+                        <h2>{creator.role}:</h2>
+                        <p>{creator.name}</p>
+                      </div>
                     ))}
+                </S.CreatorsWrapper>
+                {comic.description && (
+                  <>
+                    <h2>Description</h2>
+                    <p>{comic.description}</p>
                   </>
                 )}
               </div>

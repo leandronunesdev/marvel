@@ -23,12 +23,16 @@ export const Header = () => {
   };
 
   useEffect(() => {
+    if (!width) {
+      widthChange();
+    }
+
     window.addEventListener('resize', widthChange);
 
     return () => {
       window.removeEventListener('resize', widthChange);
     };
-  });
+  }, [width]);
 
   const onSearchChanged = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
