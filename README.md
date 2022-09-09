@@ -26,13 +26,15 @@
   <img alt="Marvel's Comic Search" title="#MarvelsComicSearch" src="./src/assets/images/marvel_preview.jpeg" />
 </h1>
 
+You see the app in production [here](https://leandronunesdev.github.io/marvel/)
+
 <h1 id="requirements">Requirements</h1>
 
 Before starting, you need to install in your machines the following tools:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 Besides that, is good to have a good code editor as [VSCode](https://code.visualstudio.com/)
 
-### 🎲 Running the App
+## 🎲 Running the App
 
 ```bash
 # Clone this repository
