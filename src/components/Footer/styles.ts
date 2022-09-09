@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
-    height: 70px;
+    flex-direction: column;
+    height: 100px;
     align-items: center;
     background-color: ${theme.colors.black};
     position: relative;
@@ -11,7 +12,15 @@ export const Wrapper = styled.div`
 
     p {
       color: ${theme.colors.white};
-      margin: auto;
+      margin: 20px auto 0;
+    }
+
+    img {
+      width: 20px;
+    }
+
+    a {
+      color: inherit;
     }
   `}
 `;

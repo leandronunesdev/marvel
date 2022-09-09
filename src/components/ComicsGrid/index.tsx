@@ -38,6 +38,7 @@ export const ComicsGrid = ({ comics }: ComicsGridProps) => {
           isFavorite={isFavorite(comic)}
           key={comic.id}
           detailsUrl={`/comic/${comic.id}`}
+          marvelUrl={comic.urls[0].url}
         />
       ))}
     </S.ComicsGrid>

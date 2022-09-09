@@ -66,12 +66,12 @@ export const ComicDetails = () => {
         <>
           {comic && (
             <S.ComicDetails>
-              <div>
+              <S.ImageContainer>
                 <img
                   src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                   alt=''
                 />
-              </div>
+              </S.ImageContainer>
               <div>
                 <div>
                   <S.ComicDetailsHeader>
@@ -104,6 +104,9 @@ export const ComicDetails = () => {
                     <p>{comic.description}</p>
                   </>
                 )}
+                <a href={comic.urls[0].url} target='_blank' rel='noreferrer'>
+                  Check on Marvel's website
+                </a>
               </div>
             </S.ComicDetails>
           )}

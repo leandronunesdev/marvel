@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 40%);
     align-items: center;
     background-color: ${theme.colors.black};
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
   `}
 `;
 

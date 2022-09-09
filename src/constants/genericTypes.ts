@@ -10,6 +10,7 @@ export type ComicType = {
   };
   dates: DateType[];
   description: string;
+  urls: UrlsType[];
 };
 
 export type CreatorType = {
@@ -20,4 +21,8 @@ export type CreatorType = {
 
 export type DateType = {
   date: string;
+};
+
+export type UrlsType = {
+  url: string;
 };

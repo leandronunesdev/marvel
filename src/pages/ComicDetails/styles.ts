@@ -1,11 +1,27 @@
 import styled, { css } from 'styled-components';
 
 export const ComicDetailsWrapper = styled.div`
-  display: flex;
-  max-width: 1240px;
-  padding: 20px;
-  margin: auto;
-  height: 100vh;
+  ${({ theme }) => css`
+    display: flex;
+    max-width: 1240px;
+    padding: 20px;
+    margin: 60px auto 0;
+    height: 100vh;
+
+    a {
+      color: inherit;
+      margin-top: 20px;
+      display: block;
+
+      &:hover {
+        color: ${theme.colors.lightRed};
+      }
+    }
+
+    @media (max-width: 800px) {
+      height: auto;
+    }
+  `}
 `;
 
 export const ComicDetails = styled.div`
@@ -36,10 +52,6 @@ export const ComicDetails = styled.div`
 
     @media (max-width: 800px) {
       grid-template-columns: 1fr;
-
-      div:first-child {
-        margin: auto;
-      }
     }
 
     @media (max-width: 400px) {
@@ -58,4 +70,10 @@ export const CreatorsWrapper = styled.div`
 export const ComicDetailsHeader = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
+`;
+
+export const ImageContainer = styled.div`
+  @media (max-width: 800px) {
+    margin: auto;
+  }
 `;
