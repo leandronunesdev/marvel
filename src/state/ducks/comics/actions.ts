@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { ComicType } from '../../../constants/genericTypes';
 
-const COMICS_URL = 'http://gateway.marvel.com/v1/public/comics';
+const COMICS_URL = 'https://gateway.marvel.com/v1/public/comics';
 
 const ts = '1660759425';
 const apikey = '1da8adb9d8fdb7ffb3cc16b00643ae7c';
