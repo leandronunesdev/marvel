@@ -41,7 +41,7 @@ export const SearchInput = ({
       {showAutocomplete && (
         <S.AutoComplete>
           {options &&
-            options.map((option: any) => (
+            options.map((option: ComicType) => (
               <S.StyledLink
                 key={option.id}
                 to={`/comic/${option.id}`}

@@ -91,7 +91,7 @@ export const ComicDetails = () => {
                 </div>
                 <S.CreatorsWrapper>
                   {creators.length &&
-                    creators.map((creator: any) => (
+                    creators.map((creator: CreatorType) => (
                       <div key={creator.resourceURI}>
                         <h2>{creator.role}:</h2>
                         <p>{creator.name}</p>
