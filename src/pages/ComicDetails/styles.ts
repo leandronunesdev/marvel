@@ -6,7 +6,7 @@ export const ComicDetailsWrapper = styled.div`
     max-width: 1240px;
     padding: 20px;
     margin: 60px auto 0;
-    height: 100vh;
+    min-height: 100vh;
 
     a {
       color: inherit;
@@ -16,10 +16,6 @@ export const ComicDetailsWrapper = styled.div`
       &:hover {
         color: ${theme.colors.lightRed};
       }
-    }
-
-    @media (max-width: 800px) {
-      height: auto;
     }
   `}
 `;

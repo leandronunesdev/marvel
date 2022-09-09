@@ -7,7 +7,7 @@ export const ComicsWrapper = styled.div`
   padding: 20px;
   margin: auto;
   margin-bottom: 50px;
-  height: 100vh;
+  min-height: 100vh;
 
   @media (max-width: 500px) {
     margin-top: 30px;

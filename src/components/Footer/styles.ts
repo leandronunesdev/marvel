@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
 
     img {
       width: 20px;
+      color: ${theme.colors.white};
     }
 
     a {
