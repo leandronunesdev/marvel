@@ -1,4 +1,9 @@
+import { isMobileDevice } from '../utils/layout';
+
+const isMobile = isMobileDevice();
+
 export const Theme = {
+  isMobile,
   font: {
     roboto: 'Roboto, sans-serif',
     robotoCondensed: 'Roboto Condensed, sans-serif',
