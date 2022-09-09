@@ -66,6 +66,17 @@ const comicsReducer = createReducer(initialState, (builder) => {
       state.isFetching = false;
       state.error = action.error;
     })
+    .addCase(actions.getAutocompleteOptions.pending, (state) => {
+      state.isFetching = false;
+    })
+    .addCase(actions.getAutocompleteOptions.fulfilled, (state, action) => {
+      state.isFetching = false;
+      state.error = undefined;
+    })
+    .addCase(actions.getAutocompleteOptions.rejected, (state, action) => {
+      state.isFetching = false;
+      state.error = action.error;
+    })
     .addCase(actions.addFavorite.pending, (state) => {
       state.isFetching = false;
     })

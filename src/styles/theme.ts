@@ -12,6 +12,7 @@ export const Theme = {
     yellow: '#FFCA19',
     black: '#202020',
     transparentWhite: 'rgb(255, 255, 255, 0.75)',
+    grey: '#d6d7da',
   },
 };
 

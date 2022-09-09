@@ -61,6 +61,23 @@ const searchComics = createAsyncThunk(
   }
 );
 
+const getAutocompleteOptions = createAsyncThunk(
+  'comics/getAutocompleteOptions',
+  async (search: string, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(
+        `${COMICS_URL}?ts=${ts}&apikey=${apikey}&hash=${hash}&titleStartsWith=${search}`
+      );
+      return { data };
+    } catch (err: any) {
+      if (!(err as Record<string, string>).response) {
+        throw err;
+      }
+      return rejectWithValue({ message: err.message, type: 'error' });
+    }
+  }
+);
+
 const addFavorite = createAsyncThunk(
   'comics/addFavorite',
   async (comic: ComicType, { rejectWithValue }) => {
@@ -79,6 +96,7 @@ const comicsActions = {
   getComics,
   getComicDetails,
   searchComics,
+  getAutocompleteOptions,
   addFavorite,
 };
 
