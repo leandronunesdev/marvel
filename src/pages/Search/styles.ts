@@ -7,17 +7,26 @@ export const ComicsWrapper = styled.div`
   padding: 20px;
   margin: auto;
   margin-bottom: 50px;
+
+  @media (max-width: 500px) {
+    margin-top: 30px;
+  }
 `;
 
 export const StyledTextBox = styled.div`
   ${({ theme }) => css`
     margin: 10% auto;
     height: 100vh;
+
     p {
       font-family: ${theme.font.robotoCondensed};
       font-weight: ${theme.font.bold};
       letter-spacing: 1px;
       font-size: 24px;
+    }
+
+    @media (max-width: 500px) {
+      margin-top: 100px;
     }
   `}
 `;
