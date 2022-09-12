@@ -5,12 +5,7 @@ export const ComicsWrapper = styled.div`
   flex-direction: column;
   max-width: 1240px;
   padding: 20px;
-  margin: auto;
-  margin-bottom: 50px;
-
-  @media (max-width: 500px) {
-    margin-top: 30px;
-  }
+  margin: 60px auto 20px;
 `;
 
 export const StyledTextBox = styled.div`
