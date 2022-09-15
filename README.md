@@ -26,7 +26,7 @@
   <img alt="Marvel's Comic Search" title="#MarvelsComicSearch" src="./src/assets/images/marvel_preview.jpeg" />
 </h1>
 
-You see the app in production [here](https://leandronunesdev.github.io/marvel/)
+You can see the app in production [here](https://leandronunesdev.github.io/marvel/)
 
 <h1 id="requirements">Requirements</h1>
 
